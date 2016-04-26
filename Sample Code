@@ -1,0 +1,18 @@
+## sample code to describe file size, word & line count
+# file size
+size_twit <- file.info("/Users/basimms/Dropbox (Personal)/datasciencecoursera/Capstone/final/en_US/en_US.twitter.txt")$size/(1024 * 
+    1024)
+# line count
+lines_twit <- countLines("/Users/basimms/Dropbox (Personal)/datasciencecoursera/Capstone/final/en_US/en_US.twitter.txt")
+# word count
+twit_file <- file("/Users/basimms/Dropbox (Personal)/datasciencecoursera/Capstone/final/en_US/en_US.twitter.txt", 
+    "r")
+words_all <- c(length(unique(twit)), length(unique(news)), length(unique(blogs)))
+
+# Combine them together
+df <- data.frame()
+df <- rbind(size_all, lines_all, words_all)
+colnames(df) <- c("Twitter", "News", "Blog")
+rownames(df) <- c("size(MB)", "num_of_lines", "num_of_words")
+paste("Raw US File Attributes")
+print(df)
